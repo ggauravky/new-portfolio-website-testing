@@ -30,22 +30,22 @@ const Footer = () => {
 
     return (
         <footer className="bg-bg-secondary border-t border-white/10">
-            <div className="container mx-auto px-4 py-12">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-10">
                     {/* About Section */}
                     <div className="lg:col-span-2">
-                        <div className="flex items-center space-x-2 mb-4">
-                            <div className="w-10 h-10 rounded-lg bg-ai-gradient flex items-center justify-center">
+                        <div className="flex items-center space-x-3 mb-5">
+                            <div className="w-10 h-10 rounded-lg bg-ai-gradient flex items-center justify-center shadow-lg shadow-accent-cyan/20">
                                 <span className="text-white font-bold text-xl">G</span>
                             </div>
                             <span className="text-xl font-bold gradient-text">Gaurav's Portfolio</span>
                         </div>
-                        <p className="text-text-secondary mb-4 max-w-md">
+                        <p className="text-text-secondary mb-6 max-w-md leading-relaxed">
                             Passionate AI & Data Science enthusiast building intelligent solutions with Python and modern web technologies. Currently seeking internship opportunities.
                         </p>
 
                         {/* Social Links */}
-                        <div className="flex space-x-4">
+                        <div className="flex space-x-3">
                             {socialIcons.map(({ icon: Icon, url, label }) => (
                                 <motion.a
                                     key={label}
@@ -65,13 +65,13 @@ const Footer = () => {
 
                     {/* Navigation Links */}
                     <div>
-                        <h3 className="text-lg font-semibold text-text-primary mb-4">Navigation</h3>
-                        <ul className="space-y-2">
+                        <h3 className="text-lg font-semibold text-text-primary mb-5">Navigation</h3>
+                        <ul className="space-y-3">
                             {footerLinks.navigation.map((link) => (
                                 <li key={link.name}>
                                     <Link
                                         to={link.path}
-                                        className="text-text-secondary hover:text-accent-cyan transition-colors"
+                                        className="text-text-secondary hover:text-accent-cyan transition-colors inline-block hover:translate-x-1 transform duration-200"
                                     >
                                         {link.name}
                                     </Link>
@@ -82,8 +82,8 @@ const Footer = () => {
 
                     {/* Resources Links */}
                     <div>
-                        <h3 className="text-lg font-semibold text-text-primary mb-4">Resources</h3>
-                        <ul className="space-y-2">
+                        <h3 className="text-lg font-semibold text-text-primary mb-5">Resources</h3>
+                        <ul className="space-y-3">
                             {footerLinks.resources.map((link) => (
                                 <li key={link.name}>
                                     {link.url ? (
@@ -111,14 +111,14 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-white/10">
-                    <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                        <p className="text-text-secondary text-sm">
+                <div className="pt-8 mt-2 border-t border-white/10">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-text-muted text-sm">
                             © {currentYear} Gaurav Kumar Yadav. All rights reserved.
                         </p>
 
-                        <p className="text-text-secondary text-sm flex items-center">
-                            Built with <FaHeart className="text-red-500 mx-1" /> using React & Tailwind CSS
+                        <p className="text-text-muted text-sm flex items-center gap-1">
+                            Built with <FaHeart className="text-red-500 animate-pulse" size={14} /> using React & Tailwind CSS
                         </p>
                     </div>
                 </div>

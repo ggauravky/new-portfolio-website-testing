@@ -5,11 +5,11 @@ import ParticleBackground from '../animations/ParticleBackground'
 
 const Hero = () => {
     return (
-        <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+        <section id="home" className="relative min-h-screen flex items-center overflow-hidden pb-20 md:pb-24">
             {/* Particle Background */}
             <ParticleBackground />
 
-            <div className="container mx-auto px-4 py-16 relative z-10">
+            <div className="container mx-auto px-4 sm:px-6 py-16 relative z-10">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
                     {/* Text Content - Order 2 on mobile, Order 1 on desktop */}
                     <motion.div
@@ -179,7 +179,7 @@ const Hero = () => {
 
             {/* Scroll Indicator */}
             <motion.div
-                className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+                className="absolute bottom-6 md:bottom-8 left-0 right-0 flex justify-center z-20"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, y: [0, 10, 0] }}
                 transition={{
@@ -187,12 +187,12 @@ const Hero = () => {
                     y: { duration: 1.5, repeat: Infinity },
                 }}
             >
-                <div className="flex flex-col items-center">
-                    <span className="text-text-muted text-sm mb-2">Scroll Down</span>
-                    <div className="w-6 h-10 border-2 border-accent-cyan rounded-full flex justify-center">
+                <div className="flex flex-col items-center bg-bg-primary/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <span className="text-text-muted text-xs md:text-sm mb-1">Scroll Down</span>
+                    <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-accent-cyan rounded-full flex justify-center">
                         <motion.div
-                            className="w-1.5 h-1.5 bg-accent-cyan rounded-full mt-2"
-                            animate={{ y: [0, 16, 0] }}
+                            className="w-1 h-1 md:w-1.5 md:h-1.5 bg-accent-cyan rounded-full mt-1.5 md:mt-2"
+                            animate={{ y: [0, 12, 0] }}
                             transition={{ duration: 1.5, repeat: Infinity }}
                         />
                     </div>

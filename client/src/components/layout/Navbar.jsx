@@ -53,26 +53,26 @@ const Navbar = () => {
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-20">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-16 md:h-20">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center space-x-2 group">
-                        <div className="w-10 h-10 rounded-lg bg-ai-gradient flex items-center justify-center transform group-hover:scale-110 transition-transform">
-                            <span className="text-white font-bold text-xl">G</span>
+                    <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group">
+                        <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-ai-gradient flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg shadow-accent-cyan/20">
+                            <span className="text-white font-bold text-lg md:text-xl">G</span>
                         </div>
-                        <span className="text-xl font-bold gradient-text hidden sm:block">
+                        <span className="text-lg md:text-xl font-bold gradient-text hidden sm:block">
                             Gaurav's Portfolio
                         </span>
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden lg:flex items-center space-x-1">
+                    <div className="hidden lg:flex items-center space-x-2">
                         {NAV_LINKS.map((link) => (
                             <button
                                 key={link.name}
                                 onClick={() => handleNavClick(link.path, link.hash)}
-                                className={`px-4 py-2 rounded-lg transition-all duration-300 ${location.pathname === link.path && !link.hash
-                                    ? 'text-accent-cyan bg-accent-cyan/10'
+                                className={`px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-300 ${location.pathname === link.path && !link.hash
+                                    ? 'text-accent-cyan bg-accent-cyan/10 shadow-sm shadow-accent-cyan/20'
                                     : 'text-text-secondary hover:text-accent-cyan hover:bg-accent-cyan/5'
                                     }`}
                             >
@@ -107,18 +107,18 @@ const Navbar = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="lg:hidden bg-bg-secondary border-t border-white/10"
+                        className="lg:hidden bg-bg-secondary/98 backdrop-blur-lg border-t border-white/10 shadow-xl"
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <div className="container mx-auto px-4 py-6 space-y-2">
+                        <div className="container mx-auto px-4 sm:px-6 py-4 space-y-1">
                             {NAV_LINKS.map((link) => (
                                 <button
                                     key={link.name}
                                     onClick={() => handleNavClick(link.path, link.hash)}
-                                    className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${location.pathname === link.path && !link.hash
+                                    className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 ${location.pathname === link.path && !link.hash
                                         ? 'text-accent-cyan bg-accent-cyan/10'
                                         : 'text-text-secondary hover:text-accent-cyan hover:bg-accent-cyan/5'
                                         }`}
@@ -128,13 +128,15 @@ const Navbar = () => {
                             ))}
 
                             {/* Mobile CTA */}
-                            <a
-                                href="/resume.pdf"
-                                download
-                                className="btn-primary w-full mt-4"
-                            >
-                                Download CV
-                            </a>
+                            <div className="pt-3 border-t border-white/10 mt-2">
+                                <a
+                                    href="/resume.pdf"
+                                    download
+                                    className="btn-primary w-full block text-center"
+                                >
+                                    Download CV
+                                </a>
+                            </div>
                         </div>
                     </motion.div>
                 )}
