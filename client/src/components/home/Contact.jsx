@@ -76,17 +76,17 @@ const Contact = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10 sm:mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                         Get In <span className="gradient-text">Touch</span>
                     </h2>
-                    <p className="text-text-secondary max-w-2xl mx-auto">
+                    <p className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base px-4">
                         Have a question or want to work together? Feel free to reach out!
                     </p>
                 </motion.div>
 
-                <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
                     {/* Contact Form */}
                     <motion.div
                         initial={{ opacity: 0, x: -30 }}
@@ -94,7 +94,7 @@ const Contact = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
-                        <form onSubmit={onSubmit} className="space-y-6">
+                        <form onSubmit={onSubmit} className="space-y-4 sm:space-y-6">
                             {/* Name */}
                             <div>
                                 <label htmlFor="name">Name *</label>

@@ -4,7 +4,7 @@ import { FaHome, FaSearch } from 'react-icons/fa'
 
 const NotFound = () => {
     return (
-        <div className="min-h-[calc(100vh-80px)] flex items-center justify-center px-4">
+        <div className="min-h-[calc(100vh-80px)] flex items-center justify-center px-4 py-8">
             <motion.div
                 className="text-center max-w-2xl"
                 initial={{ opacity: 0, y: 30 }}
@@ -13,12 +13,12 @@ const NotFound = () => {
             >
                 {/* 404 Illustration */}
                 <motion.div
-                    className="mb-8 relative"
+                    className="mb-6 sm:mb-8 relative"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <div className="text-9xl font-bold gradient-text relative">
+                    <div className="text-7xl sm:text-8xl md:text-9xl font-bold gradient-text relative">
                         404
 
                         {/* Floating elements */}
@@ -53,7 +53,7 @@ const NotFound = () => {
 
                 {/* Message */}
                 <motion.h1
-                    className="text-4xl md:text-5xl font-bold text-text-primary mb-4"
+                    className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-3 sm:mb-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
@@ -62,7 +62,7 @@ const NotFound = () => {
                 </motion.h1>
 
                 <motion.p
-                    className="text-text-secondary text-lg mb-8"
+                    className="text-text-secondary text-base sm:text-lg mb-6 sm:mb-8 px-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.5 }}

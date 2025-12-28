@@ -20,12 +20,12 @@ const ProjectsPreview = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10 sm:mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                         Featured <span className="gradient-text">Projects</span>
                     </h2>
-                    <p className="text-text-secondary max-w-2xl mx-auto">
+                    <p className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base px-4">
                         A showcase of my best work in AI, data science, and web development
                     </p>
                 </motion.div>
@@ -44,7 +44,7 @@ const ProjectsPreview = () => {
                     </motion.div>
                 ) : (
                     <>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-12">
                             {projects.map((project, index) => (
                                 <motion.div
                                     key={project._id}

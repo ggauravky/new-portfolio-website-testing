@@ -22,7 +22,13 @@ body {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
+}
+
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -73,7 +79,7 @@ body {
 
 /* Card Styles */
 .card {
-  @apply bg-bg-secondary rounded-xl p-5 md:p-6 transition-all duration-300;
+  @apply bg-bg-secondary rounded-xl p-4 sm:p-5 md:p-6 transition-all duration-300;
   @apply border border-white/5;
   @apply hover:border-accent-cyan/50 hover:shadow-lg hover:shadow-accent-cyan/20;
   @apply hover:-translate-y-1 md:hover:-translate-y-2;
@@ -135,7 +141,7 @@ a {
 input,
 textarea,
 select {
-  @apply w-full px-4 py-3 rounded-lg;
+  @apply w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base;
   @apply bg-bg-tertiary border border-white/10;
   @apply text-text-primary placeholder-text-muted;
   @apply focus:outline-none focus:border-accent-cyan focus:ring-2 focus:ring-accent-cyan/20;
@@ -211,7 +217,7 @@ img {
 
 /* Tag Styles */
 .tag {
-  @apply inline-block px-3 py-1 rounded-full text-sm font-medium;
+  @apply inline-block px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-medium;
   @apply bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20;
 }
 

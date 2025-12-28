@@ -52,17 +52,17 @@ const Skills = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10 sm:mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                         Technical <span className="gradient-text">Skills</span>
                     </h2>
-                    <p className="text-text-secondary max-w-2xl mx-auto">
+                    <p className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base px-4">
                         My technical expertise spans across AI, data science, Python development, and modern web technologies
                     </p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                     {Object.entries(SKILLS).map(([category, skills], categoryIndex) => (
                         <motion.div
                             key={category}
@@ -72,8 +72,8 @@ const Skills = () => {
                             transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
                         >
                             <Card className={`h-full ${categoryIndex === 0 ? 'lg:col-span-1 border-2 border-accent-cyan' : ''}`}>
-                                <div className="mb-6">
-                                    <div className={`inline-block px-4 py-2 rounded-lg bg-gradient-to-r ${categoryColors[category]} text-white font-semibold mb-4`}>
+                                <div className="mb-4 sm:mb-6">
+                                    <div className={`inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-gradient-to-r ${categoryColors[category]} text-white text-sm sm:text-base font-semibold mb-3 sm:mb-4`}>
                                         {category}
                                     </div>
                                     {categoryIndex === 0 && (
@@ -81,7 +81,7 @@ const Skills = () => {
                                     )}
                                 </div>
 
-                                <div className="space-y-4">
+                                <div className="space-y-3 sm:space-y-4">
                                     {skills.map((skill, index) => {
                                         const Icon = iconMap[skill.icon] || FaCode
                                         return (
@@ -91,12 +91,12 @@ const Skills = () => {
                                                 whileInView={{ opacity: 1, x: 0 }}
                                                 viewport={{ once: true }}
                                                 transition={{ duration: 0.4, delay: categoryIndex * 0.1 + index * 0.05 }}
-                                                className="flex items-center space-x-3 p-3 rounded-lg bg-bg-tertiary hover:bg-bg-tertiary/60 transition-colors group"
+                                                className="flex items-center space-x-2 sm:space-x-3 p-2 sm:p-3 rounded-lg bg-bg-tertiary hover:bg-bg-tertiary/60 transition-colors group"
                                             >
-                                                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg bg-bg-secondary group-hover:bg-accent-cyan/10 transition-colors">
-                                                    <Icon className="text-accent-cyan text-xl" />
+                                                <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-bg-secondary group-hover:bg-accent-cyan/10 transition-colors">
+                                                    <Icon className="text-accent-cyan text-lg sm:text-xl" />
                                                 </div>
-                                                <span className="text-text-primary font-medium">{skill.name}</span>
+                                                <span className="text-text-primary font-medium text-sm sm:text-base">{skill.name}</span>
                                             </motion.div>
                                         )
                                     })}

@@ -12,12 +12,12 @@ const Education = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10 sm:mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                         <span className="gradient-text">Education</span>
                     </h2>
-                    <p className="text-text-secondary max-w-2xl mx-auto">
+                    <p className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base px-4">
                         My academic journey and qualifications
                     </p>
                 </motion.div>
@@ -30,21 +30,21 @@ const Education = () => {
                     className="max-w-4xl mx-auto"
                 >
                     <Card className="border-2 border-accent-cyan/30">
-                        <div className="flex flex-col md:flex-row gap-6">
+                        <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
                             {/* Icon */}
-                            <div className="flex-shrink-0">
-                                <div className="w-20 h-20 rounded-2xl bg-ai-gradient flex items-center justify-center">
-                                    <FaGraduationCap className="text-white text-4xl" />
+                            <div className="flex-shrink-0 flex justify-center md:justify-start">
+                                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-ai-gradient flex items-center justify-center">
+                                    <FaGraduationCap className="text-white text-3xl sm:text-4xl" />
                                 </div>
                             </div>
 
                             {/* Content */}
-                            <div className="flex-grow">
+                            <div className="flex-grow text-center md:text-left">
                                 <div className="mb-4">
-                                    <h3 className="text-2xl md:text-3xl font-bold text-text-primary mb-2">
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-text-primary mb-2">
                                         {EDUCATION.degree}
                                     </h3>
-                                    <div className="flex flex-wrap gap-4 text-text-secondary">
+                                    <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 text-text-secondary text-sm">
                                         <div className="flex items-center gap-2">
                                             <FaUniversity className="text-accent-cyan" />
                                             <span>{EDUCATION.university}</span>

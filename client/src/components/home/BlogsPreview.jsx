@@ -28,12 +28,12 @@ const BlogsPreview = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10 sm:mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                         Latest <span className="gradient-text">Blog Posts</span>
                     </h2>
-                    <p className="text-text-secondary max-w-2xl mx-auto">
+                    <p className="text-text-secondary max-w-2xl mx-auto text-sm sm:text-base px-4">
                         Thoughts, tutorials, and insights on AI, data science, and technology
                     </p>
                 </motion.div>
@@ -52,7 +52,7 @@ const BlogsPreview = () => {
                     </motion.div>
                 ) : (
                     <>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto mb-10 sm:mb-12">
                             {blogs.map((blog, index) => (
                                 <motion.div
                                     key={blog._id}

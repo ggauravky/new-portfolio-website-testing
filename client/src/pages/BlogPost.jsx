@@ -36,18 +36,18 @@ const BlogPost = () => {
     }
 
     return (
-        <div className="min-h-[calc(100vh-80px)] py-16">
-            <div className="container max-w-4xl">
+        <div className="min-h-[calc(100vh-80px)] py-8 sm:py-12 md:py-16">
+            <div className="container max-w-4xl px-4 sm:px-6">
                 {/* Back Button */}
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="mb-8"
+                    className="mb-6 sm:mb-8"
                 >
                     <button
                         onClick={() => navigate('/blogs')}
-                        className="flex items-center gap-2 text-accent-cyan hover:text-accent-purple transition-colors"
+                        className="flex items-center gap-2 text-accent-cyan hover:text-accent-purple transition-colors text-sm sm:text-base"
                     >
                         <FaArrowLeft />
                         <span>Back to Blog</span>
@@ -61,7 +61,7 @@ const BlogPost = () => {
                 >
                     {/* Cover Image */}
                     {blog.coverImage && (
-                        <div className="relative h-96 mb-8 rounded-2xl overflow-hidden bg-bg-secondary">
+                        <div className="relative h-48 sm:h-64 md:h-96 mb-6 sm:mb-8 rounded-xl sm:rounded-2xl overflow-hidden bg-bg-secondary">
                             <img
                                 src={blog.coverImage}
                                 alt={blog.title}
@@ -85,12 +85,12 @@ const BlogPost = () => {
                     )}
 
                     {/* Title */}
-                    <h1 className="text-4xl md:text-5xl font-bold text-text-primary mb-4">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary mb-4">
                         {blog.title}
                     </h1>
 
                     {/* Meta Info */}
-                    <div className="flex flex-wrap items-center gap-6 text-text-muted mb-8 pb-8 border-b border-white/10">
+                    <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-text-muted text-sm mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-white/10">
                         <span className="flex items-center gap-2">
                             <FaCalendar className="text-accent-cyan" />
                             {formatDate(blog.publishedAt || blog.createdAt)}

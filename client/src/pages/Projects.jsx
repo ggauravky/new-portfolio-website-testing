@@ -29,19 +29,19 @@ const Projects = () => {
     )
 
     return (
-        <div className="min-h-[calc(100vh-80px)] py-16">
-            <div className="container">
+        <div className="min-h-[calc(100vh-80px)] py-8 sm:py-12 md:py-16">
+            <div className="container px-4 sm:px-6">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-center mb-12"
+                    className="text-center mb-8 sm:mb-12"
                 >
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                         My <span className="gradient-text">Projects</span>
                     </h1>
-                    <p className="text-text-secondary text-lg max-w-2xl mx-auto">
+                    <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto px-4">
                         A collection of projects showcasing my skills in AI, data science, Python, and web development
                     </p>
                 </motion.div>
@@ -51,20 +51,20 @@ const Projects = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="mb-12"
+                    className="mb-8 sm:mb-12"
                 >
                     <div className="flex items-center justify-center gap-2 mb-4">
                         <FaFilter className="text-accent-cyan" />
                         <span className="text-text-secondary text-sm font-semibold">Filter by Category</span>
                     </div>
-                    <div className="flex flex-wrap justify-center gap-3">
+                    <div className="flex flex-wrap justify-center gap-2 sm:gap-3 px-2">
                         {PROJECT_CATEGORIES.map((category) => (
                             <button
                                 key={category}
                                 onClick={() => setActiveFilter(category)}
-                                className={`px-6 py-2 rounded-lg font-semibold transition-all duration-300 ${activeFilter === category
-                                        ? 'bg-ai-gradient text-white shadow-lg shadow-accent-cyan/30'
-                                        : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary hover:text-accent-cyan'
+                                className={`px-4 sm:px-6 py-2 rounded-lg text-sm sm:text-base font-semibold transition-all duration-300 ${activeFilter === category
+                                    ? 'bg-ai-gradient text-white shadow-lg shadow-accent-cyan/30'
+                                    : 'bg-bg-secondary text-text-secondary hover:bg-bg-tertiary hover:text-accent-cyan'
                                     }`}
                             >
                                 {category}
@@ -105,7 +105,7 @@ const Projects = () => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
                     >
                         {filteredProjects.map((project, index) => (
                             <motion.div
