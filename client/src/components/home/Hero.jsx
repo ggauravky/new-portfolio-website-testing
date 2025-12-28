@@ -117,86 +117,86 @@ const Hero = () => {
                             {/* Profile Image Container */}
                             <motion.div
                                 className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-accent-cyan/30"
-                                animate={{{
+                                animate={{
                                     y: [0, -20, 0],
                                 }}
-                            transition={{
-                                duration: 4,
-                                repeat: Infinity,
-                                ease: 'easeInOut',
-                            }}
-                            >
-                            {/* Replace with your actual image */}
-                            <img
-                                src="/images/profile.jpg"
-                                alt="Profile"
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                    // Fallback if image doesn't exist
-                                    e.target.src = 'https://via.placeholder.com/400x400/13131a/00d9ff?text=Your+Photo'
+                                transition={{
+                                    duration: 4,
+                                    repeat: Infinity,
+                                    ease: 'easeInOut',
                                 }}
-                            />
+                            >
+                                {/* Replace with your actual image */}
+                                <img
+                                    src="/images/profile.jpg"
+                                    alt="Profile"
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                        // Fallback if image doesn't exist
+                                        e.target.src = 'https://via.placeholder.com/400x400/13131a/00d9ff?text=Your+Photo'
+                                    }}
+                                />
 
-                            {/* Gradient overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 to-transparent"></div>
-                    </motion.div>
+                                {/* Gradient overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary/60 to-transparent"></div>
+                            </motion.div>
 
-                    {/* Floating elements */}
-                    <motion.div
-                        className="absolute -top-4 -right-4 w-20 h-20 bg-accent-cyan/10 rounded-full backdrop-blur-sm border border-accent-cyan/20 flex items-center justify-center"
-                        animate={{
-                            y: [0, -10, 0],
-                            rotate: [0, 5, 0],
-                        }}
-                        transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: 'easeInOut',
-                        }}
-                    >
-                        <span className="text-2xl">🤖</span>
-                    </motion.div>
+                            {/* Floating elements */}
+                            <motion.div
+                                className="absolute -top-4 -right-4 w-20 h-20 bg-accent-cyan/10 rounded-full backdrop-blur-sm border border-accent-cyan/20 flex items-center justify-center"
+                                animate={{
+                                    y: [0, -10, 0],
+                                    rotate: [0, 5, 0],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    ease: 'easeInOut',
+                                }}
+                            >
+                                <span className="text-2xl">🤖</span>
+                            </motion.div>
 
-                    <motion.div
-                        className="absolute -bottom-4 -left-4 w-16 h-16 bg-accent-purple/10 rounded-full backdrop-blur-sm border border-accent-purple/20 flex items-center justify-center"
-                        animate={{
-                            y: [0, 10, 0],
-                            rotate: [0, -5, 0],
-                        }}
-                        transition={{
-                            duration: 3.5,
-                            repeat: Infinity,
-                            ease: 'easeInOut',
-                            delay: 0.5,
-                        }}
-                    >
-                        <span className="text-xl">💡</span>
+                            <motion.div
+                                className="absolute -bottom-4 -left-4 w-16 h-16 bg-accent-purple/10 rounded-full backdrop-blur-sm border border-accent-purple/20 flex items-center justify-center"
+                                animate={{
+                                    y: [0, 10, 0],
+                                    rotate: [0, -5, 0],
+                                }}
+                                transition={{
+                                    duration: 3.5,
+                                    repeat: Infinity,
+                                    ease: 'easeInOut',
+                                    delay: 0.5,
+                                }}
+                            >
+                                <span className="text-xl">💡</span>
+                            </motion.div>
+                        </div>
                     </motion.div>
                 </div>
-            </motion.div>
-        </div>
             </div >
 
-    {/* Scroll Indicator */ }
-    < motion.div
-className = "absolute bottom-6 md:bottom-8 left-0 right-0 flex justify-center z-20"
-initial = {{ opacity: 0 }}
-animate = {{ opacity: 1, y: [0, 10, 0] }}
-transition = {{
-    opacity: { delay: 1.5 },
-    y: { duration: 1.5, repeat: Infinity },
-}}
+            {/* Scroll Indicator */}
+            < motion.div
+                className="absolute bottom-6 md:bottom-8 left-0 right-0 flex justify-center z-20"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, y: [0, 10, 0] }}
+                transition={{
+                    opacity: { delay: 1.5 },
+                    y: { duration: 1.5, repeat: Infinity },
+                }}
             >
-    <div className="flex flex-col items-center bg-bg-primary/50 backdrop-blur-sm px-4 py-2 rounded-full">
-        <span className="text-text-muted text-xs md:text-sm mb-1">Scroll Down</span>
-        <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-accent-cyan rounded-full flex justify-center">
-            <motion.div
-                className="w-1 h-1 md:w-1.5 md:h-1.5 bg-accent-cyan rounded-full mt-1.5 md:mt-2"
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-            />
-        </div>
-    </div>
+                <div className="flex flex-col items-center bg-bg-primary/50 backdrop-blur-sm px-4 py-2 rounded-full">
+                    <span className="text-text-muted text-xs md:text-sm mb-1">Scroll Down</span>
+                    <div className="w-5 h-8 md:w-6 md:h-10 border-2 border-accent-cyan rounded-full flex justify-center">
+                        <motion.div
+                            className="w-1 h-1 md:w-1.5 md:h-1.5 bg-accent-cyan rounded-full mt-1.5 md:mt-2"
+                            animate={{ y: [0, 12, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity }}
+                        />
+                    </div>
+                </div>
             </motion.div >
         </section >
     )
