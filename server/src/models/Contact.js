@@ -72,17 +72,17 @@ const ContactSchema = new mongoose.Schema(
       // GPS Location Data
       gpsLocation: {
         coordinates: {
-          latitude: Number,
-          longitude: Number,
+          latitude: { type: Number, default: null },
+          longitude: { type: Number, default: null },
         },
-        accuracy: Number,
-        altitude: Number,
-        altitudeAccuracy: Number,
-        heading: Number,
-        speed: Number,
-        timestamp: String,
-        permissionStatus: String,
-        errorMessage: String,
+        accuracy: { type: Number, default: null },
+        altitude: { type: Number, default: null },
+        altitudeAccuracy: { type: Number, default: null },
+        heading: { type: Number, default: null },
+        speed: { type: Number, default: null },
+        timestamp: { type: String, default: null },
+        permissionStatus: { type: String, default: "unknown" },
+        errorMessage: { type: String, default: null },
       },
     },
 

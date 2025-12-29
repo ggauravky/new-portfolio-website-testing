@@ -57,6 +57,19 @@ exports.submitContact = async (req, res, next) => {
     // Get geolocation data from IP
     const geoData = await getGeoLocation(cleanIp);
 
+    // Ensure GPS location always has proper structure
+    const gpsLocation = trackingData?.locationLanguage?.gpsLocation || {
+      coordinates: { latitude: null, longitude: null },
+      accuracy: null,
+      altitude: null,
+      altitudeAccuracy: null,
+      heading: null,
+      speed: null,
+      timestamp: new Date().toISOString(),
+      permissionStatus: "not-requested",
+      errorMessage: "Location not requested",
+    };
+
     // Merge geolocation data with tracking data
     const enrichedTrackingData = trackingData
       ? {
@@ -67,6 +80,13 @@ exports.submitContact = async (req, res, next) => {
             city: geoData.city,
             region: geoData.region,
             isp: geoData.isp,
+            gpsLocation: {
+              ...gpsLocation,
+              coordinates: {
+                latitude: gpsLocation.coordinates?.latitude ?? null,
+                longitude: gpsLocation.coordinates?.longitude ?? null,
+              },
+            },
           },
         }
       : {};
