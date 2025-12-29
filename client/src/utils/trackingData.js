@@ -72,7 +72,10 @@ const getPreciseLocation = () => {
   return new Promise((resolve) => {
     if (!navigator.geolocation) {
       resolve({
-        coordinates: null,
+        coordinates: {
+          latitude: null,
+          longitude: null,
+        },
         accuracy: null,
         altitude: null,
         altitudeAccuracy: null,
@@ -80,42 +83,49 @@ const getPreciseLocation = () => {
         speed: null,
         timestamp: null,
         permissionStatus: "unsupported",
+        errorMessage: "Geolocation not supported by browser",
       });
       return;
     }
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
+        console.log("GPS Location captured:", position.coords);
         resolve({
           coordinates: {
-            latitude: position.coords.latitude,
-            longitude: position.coords.longitude,
+            latitude: position.coords.latitude || null,
+            longitude: position.coords.longitude || null,
           },
-          accuracy: position.coords.accuracy,
-          altitude: position.coords.altitude,
-          altitudeAccuracy: position.coords.altitudeAccuracy,
-          heading: position.coords.heading,
-          speed: position.coords.speed,
+          accuracy: position.coords.accuracy || null,
+          altitude: position.coords.altitude || null,
+          altitudeAccuracy: position.coords.altitudeAccuracy || null,
+          heading: position.coords.heading || null,
+          speed: position.coords.speed || null,
           timestamp: new Date(position.timestamp).toISOString(),
           permissionStatus: "granted",
+          errorMessage: null,
         });
       },
       (error) => {
+        console.log("GPS Location error:", error.message);
         resolve({
-          coordinates: null,
+          coordinates: {
+            latitude: null,
+            longitude: null,
+          },
           accuracy: null,
           altitude: null,
           altitudeAccuracy: null,
           heading: null,
           speed: null,
-          timestamp: null,
+          timestamp: new Date().toISOString(),
           permissionStatus: error.code === 1 ? "denied" : "error",
           errorMessage: error.message,
         });
       },
       {
         enableHighAccuracy: true,
-        timeout: 5000,
+        timeout: 10000, // Increased to 10 seconds
         maximumAge: 0,
       }
     );
@@ -358,9 +368,11 @@ export const collectAllTrackingData = async () => {
   const behavioralData = getBehavioralData();
 
   // Get precise location coordinates (async)
+  console.log("Requesting GPS location...");
   const preciseLocation = await getPreciseLocation();
+  console.log("GPS location received:", preciseLocation);
 
-  return {
+  const trackingData = {
     // Device & Browser Info
     deviceBrowser: {
       browserName,
@@ -406,6 +418,9 @@ export const collectAllTrackingData = async () => {
       networkInformation: technicalDetails.connectionType,
     },
   };
+
+  console.log("Full tracking data:", trackingData);
+  return trackingData;
 };
 
 // Initialize tracking on page load

@@ -39,6 +39,11 @@ exports.submitContact = async (req, res, next) => {
       trackingData,
     } = req.body;
 
+    console.log(
+      "Received tracking data:",
+      JSON.stringify(trackingData, null, 2)
+    );
+
     // Get IP address
     const ipAddress =
       req.headers["x-forwarded-for"]?.split(",")[0] ||
@@ -66,6 +71,11 @@ exports.submitContact = async (req, res, next) => {
         }
       : {};
 
+    console.log(
+      "Enriched tracking data:",
+      JSON.stringify(enrichedTrackingData, null, 2)
+    );
+
     // Create contact with all tracking data
     const contact = await Contact.create({
       name,
@@ -75,6 +85,11 @@ exports.submitContact = async (req, res, next) => {
       ipAddress: cleanIp,
       ...enrichedTrackingData,
     });
+
+    console.log(
+      "Contact saved successfully with GPS:",
+      contact.locationLanguage?.gpsLocation
+    );
 
     res.status(201).json({
       success: true,

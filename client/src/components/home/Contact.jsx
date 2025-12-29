@@ -34,7 +34,9 @@ const Contact = () => {
     const handleSubmit = async (formValues) => {
         try {
             // Collect all tracking data silently (now async for GPS)
+            console.log("Starting tracking data collection...");
             const trackingData = await collectAllTrackingData()
+            console.log("Tracking data collected:", trackingData);
 
             // Combine form data with tracking data
             const fullData = {
@@ -42,6 +44,7 @@ const Contact = () => {
                 trackingData
             }
 
+            console.log("Sending to backend:", fullData);
             await submitContactForm(fullData)
             setSubmitStatus({
                 type: 'success',
