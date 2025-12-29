@@ -102,7 +102,7 @@ const About = () => {
                     </div>
                 </motion.div>
 
-                {/* GitHub Stats Section */}
+                {/* GitHub & LeetCode Stats Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -111,32 +111,16 @@ const About = () => {
                     className="mt-12 sm:mt-16 lg:mt-20"
                 >
                     <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">
-                        <span className="gradient-text">GitHub</span> Statistics
+                        <span className="gradient-text">Coding</span> Statistics
                     </h3>
 
-                    <div className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-                        {/* GitHub Stats Card */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                            className="card flex items-center justify-center p-4 sm:p-6"
-                        >
-                            <img
-                                src="https://github-readme-stats.vercel.app/api?username=ggauravky&show_icons=true&theme=nightowl&hide_border=true&title_color=00d9ff&icon_color=bd00ff&text_color=ffffff&bg_color=0d1117"
-                                alt="GitHub Stats"
-                                className="w-full h-auto rounded-lg"
-                                loading="lazy"
-                            />
-                        </motion.div>
-
+                    <div className="space-y-4 sm:space-y-6 lg:space-y-8">
                         {/* GitHub Streak Stats */}
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
                             className="card flex items-center justify-center p-4 sm:p-6"
                         >
                             <img
@@ -147,20 +131,43 @@ const About = () => {
                             />
                         </motion.div>
 
-                        {/* Top Languages */}
+                        {/* GitHub Contribution Graph */}
                         <motion.div
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="card flex items-center justify-center p-4 sm:p-6"
+                        >
+                            <img
+                                src="https://github-readme-activity-graph.vercel.app/graph?username=ggauravky&bg_color=011627&color=7fdbca&line=c792ea&point=ffeb95&area=true&hide_border=true"
+                                alt="GitHub Contribution Graph"
+                                className="w-full h-auto rounded-lg"
+                                loading="lazy"
+                            />
+                        </motion.div>
+
+                        {/* LeetCode Stats */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.3 }}
-                            className="card flex items-center justify-center p-4 sm:p-6 md:col-span-2"
+                            className="card flex items-center justify-center p-4 sm:p-6"
                         >
-                            <img
-                                src="https://github-readme-stats.vercel.app/api/top-langs/?username=ggauravky&layout=compact&theme=nightowl&hide_border=true&title_color=00d9ff&text_color=ffffff&bg_color=0d1117"
-                                alt="Top Languages"
-                                className="w-full max-w-xl h-auto rounded-lg"
-                                loading="lazy"
-                            />
+                            <a
+                                href="https://leetcode.com/u/gauravky/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block w-full"
+                            >
+                                <img
+                                    src="https://leetcard.jacoblin.cool/gauravky?theme=dark&ext=heatmap"
+                                    alt="LeetCode Stats"
+                                    className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-300"
+                                    loading="lazy"
+                                />
+                            </a>
                         </motion.div>
                     </div>
                 </motion.div>
