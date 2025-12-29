@@ -101,6 +101,81 @@ const About = () => {
                         </div>
                     </div>
                 </motion.div>
+
+                {/* GitHub Stats Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="mt-12 sm:mt-16 lg:mt-20"
+                >
+                    <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">
+                        <span className="gradient-text">GitHub</span> Statistics
+                    </h3>
+
+                    <div className="grid md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+                        {/* GitHub Stats Card */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.1 }}
+                            className="card flex items-center justify-center p-4 sm:p-6"
+                        >
+                            <img
+                                src="https://github-readme-stats.vercel.app/api?username=ggauravky&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=00d9ff&icon_color=bd00ff&text_color=c9d1d9"
+                                alt="GitHub Stats"
+                                className="w-full h-auto rounded-lg"
+                                loading="lazy"
+                                onError={(e) => {
+                                    e.target.style.display = 'none'
+                                    e.target.parentElement.innerHTML = '<p class="text-text-secondary text-center">Unable to load GitHub stats</p>'
+                                }}
+                            />
+                        </motion.div>
+
+                        {/* GitHub Streak Stats */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
+                            className="card flex items-center justify-center p-4 sm:p-6"
+                        >
+                            <img
+                                src="https://github-readme-streak-stats.herokuapp.com/?user=ggauravky&theme=radical&hide_border=true&background=0d1117&stroke=00d9ff&ring=bd00ff&fire=00d9ff&currStreakLabel=00d9ff"
+                                alt="GitHub Streak"
+                                className="w-full h-auto rounded-lg"
+                                loading="lazy"
+                                onError={(e) => {
+                                    e.target.style.display = 'none'
+                                    e.target.parentElement.innerHTML = '<p class="text-text-secondary text-center">Unable to load GitHub streak</p>'
+                                }}
+                            />
+                        </motion.div>
+
+                        {/* Top Languages */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                            className="card flex items-center justify-center p-4 sm:p-6 md:col-span-2"
+                        >
+                            <img
+                                src="https://github-readme-stats.vercel.app/api/top-langs/?username=ggauravky&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=00d9ff&text_color=c9d1d9"
+                                alt="Top Languages"
+                                className="w-full max-w-xl h-auto rounded-lg"
+                                loading="lazy"
+                                onError={(e) => {
+                                    e.target.style.display = 'none'
+                                    e.target.parentElement.innerHTML = '<p class="text-text-secondary text-center">Unable to load top languages</p>'
+                                }}
+                            />
+                        </motion.div>
+                    </div>
+                </motion.div>
             </div>
         </section>
     )
