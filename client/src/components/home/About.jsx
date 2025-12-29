@@ -114,29 +114,55 @@ const About = () => {
                         <span className="gradient-text">Coding</span> Statistics
                     </h3>
 
-                    <div className="space-y-4 sm:space-y-6 lg:space-y-8">
-                        {/* GitHub Streak Stats */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                            className="card flex items-center justify-center p-4 sm:p-6"
-                        >
-                            <img
-                                src="https://nirzak-streak-stats.vercel.app/?user=ggauravky&theme=nightowl&hide_border=true"
-                                alt="GitHub Streak"
-                                className="w-full h-auto rounded-lg"
-                                loading="lazy"
-                            />
-                        </motion.div>
+                    <div className="space-y-4 sm:space-y-6">
+                        {/* First Row: GitHub Streak & LeetCode Stats */}
+                        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
+                            {/* GitHub Streak Stats */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.1 }}
+                                className="card flex items-center justify-center p-4 sm:p-6"
+                            >
+                                <img
+                                    src="https://nirzak-streak-stats.vercel.app/?user=ggauravky&theme=nightowl&hide_border=true"
+                                    alt="GitHub Streak"
+                                    className="w-full h-auto rounded-lg"
+                                    loading="lazy"
+                                />
+                            </motion.div>
 
-                        {/* GitHub Contribution Graph */}
+                            {/* LeetCode Stats */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 30 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: 0.2 }}
+                                className="card flex items-center justify-center p-4 sm:p-6"
+                            >
+                                <a
+                                    href="https://leetcode.com/u/gauravky/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="block w-full"
+                                >
+                                    <img
+                                        src="https://leetcard.jacoblin.cool/gauravky?theme=dark&ext=heatmap"
+                                        alt="LeetCode Stats"
+                                        className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-300"
+                                        loading="lazy"
+                                    />
+                                </a>
+                            </motion.div>
+                        </div>
+
+                        {/* Second Row: GitHub Contribution Graph */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
                             className="card flex items-center justify-center p-4 sm:p-6"
                         >
                             <img
@@ -145,29 +171,6 @@ const About = () => {
                                 className="w-full h-auto rounded-lg"
                                 loading="lazy"
                             />
-                        </motion.div>
-
-                        {/* LeetCode Stats */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
-                            className="card flex items-center justify-center p-4 sm:p-6"
-                        >
-                            <a
-                                href="https://leetcode.com/u/gauravky/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="block w-full"
-                            >
-                                <img
-                                    src="https://leetcard.jacoblin.cool/gauravky?theme=dark&ext=heatmap"
-                                    alt="LeetCode Stats"
-                                    className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-300"
-                                    loading="lazy"
-                                />
-                            </a>
                         </motion.div>
                     </div>
                 </motion.div>
