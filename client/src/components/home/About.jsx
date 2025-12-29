@@ -124,14 +124,10 @@ const About = () => {
                             className="card flex items-center justify-center p-4 sm:p-6"
                         >
                             <img
-                                src="https://github-readme-stats.vercel.app/api?username=ggauravky&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=00d9ff&icon_color=bd00ff&text_color=c9d1d9"
+                                src="https://github-readme-stats.vercel.app/api?username=ggauravky&show_icons=true&theme=nightowl&hide_border=true&title_color=00d9ff&icon_color=bd00ff&text_color=ffffff&bg_color=0d1117"
                                 alt="GitHub Stats"
                                 className="w-full h-auto rounded-lg"
                                 loading="lazy"
-                                onError={(e) => {
-                                    e.target.style.display = 'none'
-                                    e.target.parentElement.innerHTML = '<p class="text-text-secondary text-center">Unable to load GitHub stats</p>'
-                                }}
                             />
                         </motion.div>
 
@@ -144,14 +140,10 @@ const About = () => {
                             className="card flex items-center justify-center p-4 sm:p-6"
                         >
                             <img
-                                src="https://github-readme-streak-stats.herokuapp.com/?user=ggauravky&theme=radical&hide_border=true&background=0d1117&stroke=00d9ff&ring=bd00ff&fire=00d9ff&currStreakLabel=00d9ff"
+                                src="https://nirzak-streak-stats.vercel.app/?user=ggauravky&theme=nightowl&hide_border=true"
                                 alt="GitHub Streak"
                                 className="w-full h-auto rounded-lg"
                                 loading="lazy"
-                                onError={(e) => {
-                                    e.target.style.display = 'none'
-                                    e.target.parentElement.innerHTML = '<p class="text-text-secondary text-center">Unable to load GitHub streak</p>'
-                                }}
                             />
                         </motion.div>
 
@@ -164,14 +156,10 @@ const About = () => {
                             className="card flex items-center justify-center p-4 sm:p-6 md:col-span-2"
                         >
                             <img
-                                src="https://github-readme-stats.vercel.app/api/top-langs/?username=ggauravky&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=00d9ff&text_color=c9d1d9"
+                                src="https://github-readme-stats.vercel.app/api/top-langs/?username=ggauravky&layout=compact&theme=nightowl&hide_border=true&title_color=00d9ff&text_color=ffffff&bg_color=0d1117"
                                 alt="Top Languages"
                                 className="w-full max-w-xl h-auto rounded-lg"
                                 loading="lazy"
-                                onError={(e) => {
-                                    e.target.style.display = 'none'
-                                    e.target.parentElement.innerHTML = '<p class="text-text-secondary text-center">Unable to load top languages</p>'
-                                }}
                             />
                         </motion.div>
                     </div>
