@@ -1,23 +1,79 @@
 const Contact = require("../models/Contact");
+const axios = require("axios");
+
+// Helper function to get geolocation from IP
+const getGeoLocation = async (ip) => {
+  try {
+    // Using ip-api.com (free, no API key required)
+    const response = await axios.get(`http://ip-api.com/json/${ip}`);
+    if (response.data && response.data.status === "success") {
+      return {
+        country: response.data.country || "Unknown",
+        city: response.data.city || "Unknown",
+        region: response.data.regionName || "Unknown",
+        isp: response.data.isp || "Unknown",
+      };
+    }
+  } catch (error) {
+    console.log("Geolocation fetch failed:", error.message);
+  }
+  return {
+    country: "Unknown",
+    city: "Unknown",
+    region: "Unknown",
+    isp: "Unknown",
+  };
+};
 
 // @desc    Submit contact form
 // @route   POST /api/contact
 // @access  Public
 exports.submitContact = async (req, res, next) => {
   try {
-    const { name, email, subject, message } = req.body;
+    const {
+      name,
+      email,
+      subject,
+      message,
+      // Tracking data (sent from frontend)
+      trackingData,
+    } = req.body;
 
     // Get IP address
     const ipAddress =
-      req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+      req.headers["x-forwarded-for"]?.split(",")[0] ||
+      req.connection.remoteAddress ||
+      req.socket.remoteAddress ||
+      "Unknown";
 
-    // Create contact
+    // Clean IP address (remove ::ffff: prefix if present)
+    const cleanIp = ipAddress.replace("::ffff:", "");
+
+    // Get geolocation data from IP
+    const geoData = await getGeoLocation(cleanIp);
+
+    // Merge geolocation data with tracking data
+    const enrichedTrackingData = trackingData
+      ? {
+          ...trackingData,
+          locationLanguage: {
+            ...trackingData.locationLanguage,
+            country: geoData.country,
+            city: geoData.city,
+            region: geoData.region,
+            isp: geoData.isp,
+          },
+        }
+      : {};
+
+    // Create contact with all tracking data
     const contact = await Contact.create({
       name,
       email,
       subject,
       message,
-      ipAddress,
+      ipAddress: cleanIp,
+      ...enrichedTrackingData,
     });
 
     res.status(201).json({

@@ -36,6 +36,109 @@ const ContactSchema = new mongoose.Schema(
     ipAddress: {
       type: String,
     },
+
+    // ============= TRACKING DATA (Educational Purpose) =============
+    // Device & Browser Info
+    deviceBrowser: {
+      browserName: String,
+      browserVersion: String,
+      operatingSystem: String,
+      deviceType: String,
+      userAgent: String,
+      screen: {
+        screenWidth: Number,
+        screenHeight: Number,
+        screenResolution: String,
+        availWidth: Number,
+        availHeight: Number,
+        colorDepth: Number,
+        pixelDepth: Number,
+        pixelRatio: Number,
+        orientation: String,
+      },
+    },
+
+    // Location & Language
+    locationLanguage: {
+      timezone: String,
+      timezoneOffset: Number,
+      language: String,
+      languages: [String],
+      locale: String,
+      country: String,
+      city: String,
+      region: String,
+      isp: String,
+    },
+
+    // Technical Details
+    technical: {
+      cookieEnabled: Boolean,
+      doNotTrack: String,
+      onLine: Boolean,
+      maxTouchPoints: Number,
+      touchSupport: Boolean,
+      connectionType: String,
+      connectionDownlink: mongoose.Schema.Types.Mixed,
+      connectionRtt: mongoose.Schema.Types.Mixed,
+      connectionSaveData: Boolean,
+      hardwareConcurrency: mongoose.Schema.Types.Mixed,
+      deviceMemory: mongoose.Schema.Types.Mixed,
+      platform: String,
+      vendor: String,
+      appName: String,
+      appVersion: String,
+      product: String,
+      productSub: String,
+    },
+
+    // Browser Fingerprint
+    fingerprint: {
+      canvas: String,
+      webgl: {
+        renderer: String,
+        vendor: String,
+        version: String,
+        shadingLanguageVersion: String,
+      },
+      audio: String,
+      fonts: [String],
+      plugins: [
+        {
+          name: String,
+          description: String,
+          filename: String,
+        },
+      ],
+    },
+
+    // Behavioral Data
+    behavioral: {
+      pagesVisited: [
+        {
+          page: String,
+          timestamp: String,
+        },
+      ],
+      sessionDuration: String,
+      sessionDurationSeconds: Number,
+      referrer: String,
+      currentUrl: String,
+      maxScrollDepth: Number,
+      numberOfVisits: Number,
+      isReturningVisitor: Boolean,
+    },
+
+    // Additional Metadata
+    metadata: {
+      collectionTimestamp: String,
+      viewportWidth: Number,
+      viewportHeight: Number,
+      documentWidth: Number,
+      documentHeight: Number,
+      batteryLevel: String,
+      networkInformation: String,
+    },
   },
   {
     timestamps: true,

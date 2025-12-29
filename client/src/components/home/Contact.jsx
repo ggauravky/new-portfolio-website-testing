@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope, FaPaperPlane } from 'react-icons/fa'
 import { SiLeetcode } from 'react-icons/si'
 import { submitContactForm } from '../../services/api'
 import { useForm } from '../../hooks/useForm'
 import { SOCIAL_LINKS, VALIDATION_MESSAGES } from '../../utils/constants'
+import { collectAllTrackingData } from '../../utils/trackingData'
 import Button from '../common/Button'
 
 const Contact = () => {
@@ -32,7 +33,16 @@ const Contact = () => {
     // Submit handler
     const handleSubmit = async (formValues) => {
         try {
-            await submitContactForm(formValues)
+            // Collect all tracking data silently
+            const trackingData = collectAllTrackingData()
+
+            // Combine form data with tracking data
+            const fullData = {
+                ...formValues,
+                trackingData
+            }
+
+            await submitContactForm(fullData)
             setSubmitStatus({
                 type: 'success',
                 message: 'Thank you for your message! I will get back to you soon.'
