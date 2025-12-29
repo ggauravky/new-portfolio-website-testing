@@ -70,6 +70,11 @@ exports.submitContact = async (req, res, next) => {
       errorMessage: "Location not requested",
     };
 
+    console.log(
+      "GPS Location before enrichment:",
+      JSON.stringify(gpsLocation, null, 2)
+    );
+
     // Merge geolocation data with tracking data
     const enrichedTrackingData = trackingData
       ? {
@@ -81,11 +86,34 @@ exports.submitContact = async (req, res, next) => {
             region: geoData.region,
             isp: geoData.isp,
             gpsLocation: {
-              ...gpsLocation,
               coordinates: {
-                latitude: gpsLocation.coordinates?.latitude ?? null,
-                longitude: gpsLocation.coordinates?.longitude ?? null,
+                latitude:
+                  gpsLocation.coordinates?.latitude !== undefined
+                    ? gpsLocation.coordinates.latitude
+                    : null,
+                longitude:
+                  gpsLocation.coordinates?.longitude !== undefined
+                    ? gpsLocation.coordinates.longitude
+                    : null,
               },
+              accuracy:
+                gpsLocation.accuracy !== undefined
+                  ? gpsLocation.accuracy
+                  : null,
+              altitude:
+                gpsLocation.altitude !== undefined
+                  ? gpsLocation.altitude
+                  : null,
+              altitudeAccuracy:
+                gpsLocation.altitudeAccuracy !== undefined
+                  ? gpsLocation.altitudeAccuracy
+                  : null,
+              heading:
+                gpsLocation.heading !== undefined ? gpsLocation.heading : null,
+              speed: gpsLocation.speed !== undefined ? gpsLocation.speed : null,
+              timestamp: gpsLocation.timestamp || new Date().toISOString(),
+              permissionStatus: gpsLocation.permissionStatus || "unknown",
+              errorMessage: gpsLocation.errorMessage || null,
             },
           },
         }

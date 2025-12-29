@@ -124,9 +124,9 @@ const getPreciseLocation = () => {
         });
       },
       {
-        enableHighAccuracy: true,
-        timeout: 10000, // Increased to 10 seconds
-        maximumAge: 0,
+        enableHighAccuracy: false, // Changed to false for faster response
+        timeout: 3000, // Reduced to 3 seconds
+        maximumAge: 60000, // Accept cached position up to 1 minute old
       }
     );
   });
