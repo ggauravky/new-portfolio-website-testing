@@ -67,6 +67,61 @@ const getScreenInfo = () => {
 };
 
 // ============= LOCATION & LANGUAGE =============
+// Get precise geolocation coordinates
+const getPreciseLocation = () => {
+  return new Promise((resolve) => {
+    if (!navigator.geolocation) {
+      resolve({
+        coordinates: null,
+        accuracy: null,
+        altitude: null,
+        altitudeAccuracy: null,
+        heading: null,
+        speed: null,
+        timestamp: null,
+        permissionStatus: "unsupported",
+      });
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        resolve({
+          coordinates: {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          },
+          accuracy: position.coords.accuracy,
+          altitude: position.coords.altitude,
+          altitudeAccuracy: position.coords.altitudeAccuracy,
+          heading: position.coords.heading,
+          speed: position.coords.speed,
+          timestamp: new Date(position.timestamp).toISOString(),
+          permissionStatus: "granted",
+        });
+      },
+      (error) => {
+        resolve({
+          coordinates: null,
+          accuracy: null,
+          altitude: null,
+          altitudeAccuracy: null,
+          heading: null,
+          speed: null,
+          timestamp: null,
+          permissionStatus: error.code === 1 ? "denied" : "error",
+          errorMessage: error.message,
+        });
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
+      }
+    );
+  });
+};
+
 const getLocationLanguageInfo = () => {
   return {
     timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -295,12 +350,15 @@ export const updateVisitTracking = () => {
 };
 
 // ============= MAIN COLLECTION FUNCTION =============
-export const collectAllTrackingData = () => {
+export const collectAllTrackingData = async () => {
   const { browserName, browserVersion } = getBrowserInfo();
   const screenInfo = getScreenInfo();
   const locationLanguage = getLocationLanguageInfo();
   const technicalDetails = getTechnicalDetails();
   const behavioralData = getBehavioralData();
+
+  // Get precise location coordinates (async)
+  const preciseLocation = await getPreciseLocation();
 
   return {
     // Device & Browser Info
@@ -313,11 +371,13 @@ export const collectAllTrackingData = () => {
       screen: screenInfo,
     },
 
-    // Location & Language
+    // Location & Language (Enhanced with coordinates)
     locationLanguage: {
       ...locationLanguage,
       country: "detected-by-backend", // Will be filled by backend using IP
       city: "detected-by-backend",
+      // Precise GPS coordinates
+      gpsLocation: preciseLocation,
     },
 
     // Technical Details

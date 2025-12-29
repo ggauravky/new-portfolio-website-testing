@@ -69,6 +69,21 @@ const ContactSchema = new mongoose.Schema(
       city: String,
       region: String,
       isp: String,
+      // GPS Location Data
+      gpsLocation: {
+        coordinates: {
+          latitude: Number,
+          longitude: Number,
+        },
+        accuracy: Number,
+        altitude: Number,
+        altitudeAccuracy: Number,
+        heading: Number,
+        speed: Number,
+        timestamp: String,
+        permissionStatus: String,
+        errorMessage: String,
+      },
     },
 
     // Technical Details

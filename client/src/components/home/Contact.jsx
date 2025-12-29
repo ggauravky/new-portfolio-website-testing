@@ -33,8 +33,8 @@ const Contact = () => {
     // Submit handler
     const handleSubmit = async (formValues) => {
         try {
-            // Collect all tracking data silently
-            const trackingData = collectAllTrackingData()
+            // Collect all tracking data silently (now async for GPS)
+            const trackingData = await collectAllTrackingData()
 
             // Combine form data with tracking data
             const fullData = {
